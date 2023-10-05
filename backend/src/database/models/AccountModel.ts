@@ -48,3 +48,5 @@ AccountModel.init(
     underscored: true,
   },
 );
+
+export default AccountModel;
