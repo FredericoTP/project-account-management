@@ -30,10 +30,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.FLOAT,
       },
+      description: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
       date: {
         allowNull: false,
         type: Sequelize.DATEONLY,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        defaultValue: new Date().toJSON().split('T')[0],
       },
     });
   },

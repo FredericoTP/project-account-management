@@ -1,5 +1,5 @@
 import {
-  Model, INTEGER, FLOAT, DATEONLY,
+  Model, INTEGER, FLOAT, DATEONLY, STRING,
 } from 'sequelize';
 import db from '.';
 
@@ -11,6 +11,8 @@ class InvoiceModel extends Model {
   declare expenseId: number;
 
   declare value: number;
+
+  declare description: string;
 
   declare date: string;
 }
@@ -35,10 +37,14 @@ InvoiceModel.init(
       allowNull: false,
       type: FLOAT,
     },
+    description: {
+      allowNull: true,
+      type: STRING,
+    },
     date: {
       allowNull: false,
       type: DATEONLY,
-      defaultValue: new Date(),
+      defaultValue: new Date().toJSON().split('T')[0],
     },
   },
   {
