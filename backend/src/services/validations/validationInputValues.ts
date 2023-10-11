@@ -1,4 +1,6 @@
-import { accountSchema, emailSchema } from './schemas';
+import {
+  accountSchema, emailSchema, nameSchema, passwordSchema,
+} from './schemas';
 import { IAccount } from '../../interfaces';
 import { BadRequest } from '../../errors';
 
@@ -14,4 +16,18 @@ const validateEmail = (email: string): void => {
   if (error) throw new BadRequest(error.message);
 };
 
-export { validateNewAccount, validateEmail };
+const validateName = (name: string): void => {
+  const { error } = nameSchema.validate(name);
+
+  if (error) throw new BadRequest(error.message);
+};
+
+const validatePassword = (password: string): void => {
+  const { error } = passwordSchema.validate(password);
+
+  if (error) throw new BadRequest(error.message);
+};
+
+export {
+  validateNewAccount, validateEmail, validateName, validatePassword,
+};

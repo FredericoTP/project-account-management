@@ -2,7 +2,9 @@ import { ModelStatic } from 'sequelize';
 import AccountModel from '../database/models/AccountModel';
 import { NotFound, Conflict } from '../errors';
 import { IAccount } from '../interfaces';
-import { validateNewAccount, validateEmail } from './validations/validationInputValues';
+import {
+  validateNewAccount, validateEmail, validateName, validatePassword,
+} from './validations/validationInputValues';
 
 class AccountService {
   private accountModel: ModelStatic<AccountModel>;
@@ -39,6 +41,24 @@ class AccountService {
     });
 
     return account;
+  }
+
+  public async updateName(name: string, email: string): Promise<void> {
+    validateName(name);
+
+    await this.accountModel.update(
+      { name },
+      { where: { email } },
+    );
+  }
+
+  public async updatePassword(password: string, email: string): Promise<void> {
+    validatePassword(password);
+
+    await this.accountModel.update(
+      { password },
+      { where: { email } },
+    );
   }
 
   public async delete(email: string): Promise<void> {
