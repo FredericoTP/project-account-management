@@ -4,4 +4,20 @@ interface IAccount {
   password: string;
 }
 
-export default IAccount;
+interface IUpAccName {
+  infoToken: {
+    id: number,
+    email: string,
+  };
+  name: string;
+}
+
+interface IUpAccPassword {
+  infoToken: {
+    id: number,
+    email: string,
+  };
+  password: string;
+}
+
+export { IAccount, IUpAccName, IUpAccPassword };

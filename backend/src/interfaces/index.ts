@@ -1,4 +1,6 @@
 import { JwtInterface, JwtObject } from './JwtInterface';
-import IAccount from './AccountInterface';
+import { IAccount, IUpAccName, IUpAccPassword } from './AccountInterface';
 
-export { JwtInterface, JwtObject, IAccount };
+export {
+  JwtInterface, JwtObject, IAccount, IUpAccName, IUpAccPassword,
+};

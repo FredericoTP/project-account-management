@@ -59,8 +59,11 @@ class AccountService {
   public async updatePassword(password: string, email: string): Promise<void> {
     validatePassword(password);
 
+    const SALT_ROUND = Number(process.env.BCRYPT_SALT_ROUNDS) || 10;
+    const hash = bcrypt.hashSync(password, SALT_ROUND);
+
     await this.accountModel.update(
-      { password },
+      { password: hash },
       { where: { email } },
     );
   }
