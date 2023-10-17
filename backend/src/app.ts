@@ -2,7 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import {
   BadRequest, Conflict, NotFound, Unauthorized,
 } from './errors';
-import { accountRouter } from './routers';
+import { accountRouter, loginRouter } from './routers';
 
 const app = express();
 
@@ -11,6 +11,8 @@ app.use(express.json());
 app.get('/health', (_req, res) => res.status(200).send('Server on and healthy!'));
 
 app.use('/account', accountRouter);
+
+app.use('/login,', loginRouter);
 
 app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
   if (err instanceof BadRequest) {

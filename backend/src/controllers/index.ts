@@ -1,5 +1,4 @@
 import AccountController from './Account.controller';
+import LoginController from './Login.controller';
 
-const a = 1;
-
-export { AccountController, a };
+export { AccountController, LoginController };
