@@ -1,6 +1,7 @@
+import bcrypt = require('bcryptjs');
 import { ModelStatic } from 'sequelize';
 import AccountModel from '../database/models/AccountModel';
-import { NotFound, Conflict } from '../errors';
+import { Conflict } from '../errors';
 import { IAccount } from '../interfaces';
 import {
   validateNewAccount, validateEmail, validateName, validatePassword,
@@ -36,8 +37,11 @@ class AccountService {
 
     if (checkAccount) throw new Conflict('Account already exists');
 
+    const SALT_ROUND = Number(process.env.BCRYPT_SALT_ROUNDS) || 10;
+    const hash = bcrypt.hashSync(password, SALT_ROUND);
+
     const account = await this.accountModel.create({
-      name, email, password,
+      name, email, password: hash,
     });
 
     return account;
@@ -55,8 +59,11 @@ class AccountService {
   public async updatePassword(password: string, email: string): Promise<void> {
     validatePassword(password);
 
+    const SALT_ROUND = Number(process.env.BCRYPT_SALT_ROUNDS) || 10;
+    const hash = bcrypt.hashSync(password, SALT_ROUND);
+
     await this.accountModel.update(
-      { password },
+      { password: hash },
       { where: { email } },
     );
   }

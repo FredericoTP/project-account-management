@@ -21,6 +21,11 @@ const accountSchema: ObjectSchema = Joi.object({
   password: passwordSchema,
 });
 
+const loginSchema: ObjectSchema = Joi.object({
+  email: emailSchema,
+  password: passwordSchema,
+});
+
 export {
-  accountSchema, nameSchema, emailSchema, passwordSchema,
+  accountSchema, nameSchema, emailSchema, passwordSchema, loginSchema,
 };
