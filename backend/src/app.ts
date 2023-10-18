@@ -12,7 +12,7 @@ app.get('/health', (_req, res) => res.status(200).send('Server on and healthy!')
 
 app.use('/account', accountRouter);
 
-app.use('/login,', loginRouter);
+app.use('/login', loginRouter);
 
 app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
   if (err instanceof BadRequest) {

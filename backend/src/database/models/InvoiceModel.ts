@@ -54,3 +54,5 @@ InvoiceModel.init(
     underscored: true,
   },
 );
+
+export default InvoiceModel;

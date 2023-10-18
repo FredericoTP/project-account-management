@@ -26,6 +26,8 @@ const loginSchema: ObjectSchema = Joi.object({
   password: passwordSchema,
 });
 
+const expenseSchema: StringSchema = Joi.string().min(3).required().messages(customMessage('expense', 3, 'string'));
+
 export {
-  accountSchema, nameSchema, emailSchema, passwordSchema, loginSchema,
+  accountSchema, nameSchema, emailSchema, passwordSchema, loginSchema, expenseSchema,
 };
