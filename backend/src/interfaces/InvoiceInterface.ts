@@ -13,4 +13,9 @@ interface IUpdateInvoice {
   date?: string;
 }
 
-export { INewInvoice, IUpdateInvoice };
+interface IUpInvoiceReq {
+  id: number;
+  invoiceInfo: IUpdateInvoice;
+}
+
+export { INewInvoice, IUpdateInvoice, IUpInvoiceReq };

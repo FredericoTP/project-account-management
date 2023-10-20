@@ -1,7 +1,7 @@
 import { JwtInterface, JwtObject } from './JwtInterface';
 import { IAccount, IUpAccName, IUpAccPassword } from './AccountInterface';
 import ILogin from './LoginInterface';
-import { INewInvoice, IUpdateInvoice } from './InvoiceInterface';
+import { INewInvoice, IUpdateInvoice, IUpInvoiceReq } from './InvoiceInterface';
 
 export {
   JwtInterface,
@@ -12,4 +12,5 @@ export {
   ILogin,
   INewInvoice,
   IUpdateInvoice,
+  IUpInvoiceReq,
 };
