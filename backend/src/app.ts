@@ -2,7 +2,9 @@ import express, { Request, Response, NextFunction } from 'express';
 import {
   BadRequest, Conflict, NotFound, Unauthorized,
 } from './errors';
-import { accountRouter, loginRouter, expenseRouter } from './routers';
+import {
+  accountRouter, loginRouter, expenseRouter, invoiceRouter,
+} from './routers';
 
 const app = express();
 
@@ -15,6 +17,8 @@ app.use('/account', accountRouter);
 app.use('/login', loginRouter);
 
 app.use('/expense', expenseRouter);
+
+app.use('/invoice', invoiceRouter);
 
 app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
   if (err instanceof BadRequest) {

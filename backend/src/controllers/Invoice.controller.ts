@@ -1,14 +1,19 @@
 import { Request, Response } from 'express';
 import InvoiceService from '../services/Invoice.service';
-import { INewInvoice, IUpInvoiceReq } from '../interfaces';
+import { INewInvoiceReq, IUpInvoiceReq } from '../interfaces';
 
 class InvoiceController {
   constructor(private invoiceService = new InvoiceService()) {}
 
   public async create(req: Request, res: Response): Promise<Response> {
-    const invoiceInfo: INewInvoice = req.body;
+    const invoiceInfo: INewInvoiceReq = req.body;
+    const {
+      infoToken, expenseId, value, description, date,
+    } = invoiceInfo;
 
-    const newInvoice = await this.invoiceService.create(invoiceInfo);
+    const newInvoice = await this.invoiceService.create({
+      accountId: infoToken.id, expenseId, value, description, date,
+    });
 
     return res.status(201).json(newInvoice);
   }
