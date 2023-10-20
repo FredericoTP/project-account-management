@@ -41,7 +41,7 @@ class ExpenseService {
 
     const checkExpense = await this.findExpense(oldExpense);
 
-    if (!checkExpense) throw new Conflict('Expense doesn\'t exists');
+    if (!checkExpense) throw new Conflict('Expense doesn\'t exist');
 
     await this.expenseModel.update(
       { expense: newExpense },
