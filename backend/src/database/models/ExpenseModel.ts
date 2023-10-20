@@ -27,3 +27,5 @@ ExpenseModel.init(
     underscored: true,
   },
 );
+
+export default ExpenseModel;

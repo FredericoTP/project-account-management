@@ -1,7 +1,16 @@
 import {
-  accountSchema, emailSchema, nameSchema, passwordSchema, loginSchema,
+  accountSchema,
+  emailSchema,
+  nameSchema,
+  passwordSchema,
+  loginSchema,
+  expenseSchema,
+  invoiceSchema,
+  updateInvoiceSchema,
 } from './schemas';
-import { IAccount, ILogin } from '../../interfaces';
+import {
+  IAccount, ILogin, INewInvoice, IUpdateInvoice,
+} from '../../interfaces';
 import { BadRequest } from '../../errors';
 
 const validateNewAccount = (accountInfo: IAccount): void => {
@@ -34,6 +43,31 @@ const validateLogin = (accountInfo: ILogin): void => {
   if (error) throw new BadRequest(error.message);
 };
 
+const validateExpense = (expense: string): void => {
+  const { error } = expenseSchema.validate(expense);
+
+  if (error) throw new BadRequest(error.message);
+};
+
+const validateInvoice = (invoiceInfo: INewInvoice): void => {
+  const { error } = invoiceSchema.validate(invoiceInfo);
+
+  if (error) throw new BadRequest(error.message);
+};
+
+const validateUpdateInvoice = (invoiceInfo: IUpdateInvoice): void => {
+  const { error } = updateInvoiceSchema.validate(invoiceInfo);
+
+  if (error) throw new BadRequest(error.message);
+};
+
 export {
-  validateNewAccount, validateEmail, validateName, validatePassword, validateLogin,
+  validateNewAccount,
+  validateEmail,
+  validateName,
+  validatePassword,
+  validateLogin,
+  validateExpense,
+  validateInvoice,
+  validateUpdateInvoice,
 };
