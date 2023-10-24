@@ -36,6 +36,16 @@ const returnCreate = {
   },
 };
 
+const reqParam = {
+  name: 'Fred',
+  password: '12345678',
+  infoToken: {
+    id: 2,
+    name: 'Krainz',
+    email: 'test@test.com',
+  },
+};
+
 export {
-  allAccounts, emptyParam, oneAccount, accountParams, returnCreate,
+  allAccounts, emptyParam, oneAccount, accountParams, returnCreate, reqParam,
 };
