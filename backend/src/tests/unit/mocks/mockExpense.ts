@@ -16,4 +16,22 @@ const oneExpense = {
   }],
 };
 
-export { allExpenses, oneExpense };
+const createParamExpense = {
+  expense: 'Alimentação',
+};
+
+const returnCreate = {
+  dataValues: {
+    id: 1,
+    expense: 'Alimentação',
+  },
+};
+
+const updateParamExpense = {
+  oldExpense: 'Alimentação',
+  newExpense: 'Energia',
+};
+
+export {
+  allExpenses, oneExpense, createParamExpense, returnCreate, updateParamExpense,
+};

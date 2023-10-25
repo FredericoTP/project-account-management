@@ -13,7 +13,7 @@ class ExpenseController {
   public async create(req: Request, res: Response): Promise<Response> {
     const { expense } = req.body;
 
-    const newExpense = this.expenseService.create(expense);
+    const newExpense = await this.expenseService.create(expense);
 
     return res.status(201).json(newExpense);
   }
