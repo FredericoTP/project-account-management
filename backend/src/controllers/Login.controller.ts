@@ -4,11 +4,7 @@ import JwtToken from '../authentication/auth';
 import { ILogin } from '../interfaces';
 
 class LoginController {
-  private loginService: LoginService;
-
-  constructor(private auth: JwtToken) {
-    this.loginService = new LoginService(this.auth);
-  }
+  constructor(private loginService = new LoginService(new JwtToken())) {}
 
   public async login(req: Request, res: Response): Promise<Response> {
     const loginInfo: ILogin = req.body;
