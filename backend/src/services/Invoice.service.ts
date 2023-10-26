@@ -30,7 +30,7 @@ class InvoiceService {
   public async update(id: number, invoiceInfo: IUpdateInvoice): Promise<void> {
     validateUpdateInvoice(invoiceInfo);
 
-    const checkInvoice = this.invoiceModel.findOne(
+    const checkInvoice = await this.invoiceModel.findOne(
       { where: { id } },
     );
 
@@ -43,7 +43,7 @@ class InvoiceService {
   }
 
   public async delete(id: number): Promise<void> {
-    const checkInvoice = this.invoiceModel.findOne(
+    const checkInvoice = await this.invoiceModel.findOne(
       { where: { id } },
     );
 
