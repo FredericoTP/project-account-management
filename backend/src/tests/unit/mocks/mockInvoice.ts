@@ -60,6 +60,26 @@ const validUpdate = {
   description: 'Comida',
 };
 
+const createInvoiceReqParam = {
+  infoToken: {
+    id: 1,
+  },
+  expenseId: 2,
+  value: 10,
+  date: '2023-09-21',
+};
+
+const updateInvoiceReqParam = {
+  id: 1,
+  invoiceInfo: {
+    description: 'Comida',
+  },
+};
+
+const deleteInvoiceReqParam = {
+  id: 1,
+};
+
 export {
   emptyInvoiceParam,
   invalidDate,
@@ -68,4 +88,7 @@ export {
   accountIdInvoices,
   invalidParam,
   validUpdate,
+  createInvoiceReqParam,
+  updateInvoiceReqParam,
+  deleteInvoiceReqParam,
 };
