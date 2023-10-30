@@ -1,7 +1,8 @@
-import * as Joi from 'joi';
 import {
   StringSchema, ObjectSchema, NumberSchema, DateSchema,
 } from 'joi';
+
+const Joi = require('joi').extend(require('@joi/date'));
 
 const customMessage = (fieldName: string, min: number, type: string) => ({
   'string.base': `${fieldName} should be a type of ${type}`,
@@ -38,7 +39,7 @@ const valueSchema: NumberSchema = Joi.number().min(0).required().messages(custom
 
 const descriptionSchema: StringSchema = Joi.string().messages(customMessage('description', 0, 'string'));
 
-const dateSchema: DateSchema = Joi.date().iso().required().messages(customMessage('date', 0, 'date'));
+const dateSchema: DateSchema = Joi.date().format('YYYY-MM-DD').required().messages(customMessage('date', 0, 'date'));
 
 const invoiceSchema: ObjectSchema = Joi.object({
   accountId: accountIdSchema,
@@ -52,7 +53,7 @@ const updateInvoiceSchema: ObjectSchema = Joi.object({
   expenseId: Joi.number().messages(customMessage('value', 0, 'number')),
   value: Joi.number().min(0).messages(customMessage('value', 0, 'number')),
   description: descriptionSchema,
-  date: Joi.date().iso().messages(customMessage('date', 0, 'date')),
+  date: Joi.date().format('YYYY-MM-DD').messages(customMessage('date', 0, 'date')),
 });
 
 export {

@@ -14,6 +14,6 @@ accountRouter.patch('/name', validateToken, validateUpdateName, (req: Request, r
 
 accountRouter.patch('/password', validateToken, validateUpdatePassword, (req: Request, res:Response) => accountController.updatePassword(req, res));
 
-accountRouter.delete('/delete', validateToken, (req: Request, res:Response) => accountController.delete(req, res));
+accountRouter.delete('/', validateToken, (req: Request, res:Response) => accountController.delete(req, res));
 
 export default accountRouter;

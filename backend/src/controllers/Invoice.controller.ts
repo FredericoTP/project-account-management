@@ -23,7 +23,7 @@ class InvoiceController {
 
     await this.invoiceService.update(info.id, info.invoiceInfo);
 
-    return res.status(200).json({ message: 'Account has been updated' });
+    return res.status(200).json({ message: 'Invoice has been updated' });
   }
 
   public async delete(req: Request, res: Response): Promise<Response> {
