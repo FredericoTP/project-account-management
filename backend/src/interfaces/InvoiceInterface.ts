@@ -28,6 +28,13 @@ interface IUpInvoiceReq {
   invoiceInfo: IUpdateInvoice;
 }
 
+interface IAllInvoiceReq {
+  infoToken: {
+    id: number,
+    email: string,
+  };
+}
+
 export {
-  INewInvoice, IUpdateInvoice, IUpInvoiceReq, INewInvoiceReq,
+  INewInvoice, IUpdateInvoice, IUpInvoiceReq, INewInvoiceReq, IAllInvoiceReq,
 };
