@@ -8,6 +8,8 @@ import {
 const invoiceRouter = Router();
 const invoiceController = new InvoiceController();
 
+invoiceRouter.get('/', validateToken, (req: Request, res: Response) => invoiceController.findByAccountId(req, res));
+
 invoiceRouter.post('/', validateToken, validateNewInvoice, (req: Request, res: Response) => invoiceController.create(req, res));
 
 invoiceRouter.patch('/', validateToken, validateUpdateInvoice, (req: Request, res: Response) => invoiceController.update(req, res));
