@@ -11,8 +11,10 @@ type LoginContextType = {
     setValue: React.Dispatch<React.SetStateAction<string>>;
     handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   };
+  alertMessage: string;
+  isLoading: boolean;
   isBtnDisabled: () => boolean;
-  handleClick: () => void;
+  handleLogin: () => void;
 };
 
 const LoginContext = createContext({} as LoginContextType);

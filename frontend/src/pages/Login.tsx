@@ -3,7 +3,7 @@ import LoginContext from '../context/LoginContext';
 
 function Login() {
   const {
-    emailInput, passwordInput, isBtnDisabled, handleClick,
+    emailInput, passwordInput, alertMessage, isLoading, isBtnDisabled, handleLogin,
   } = useContext(LoginContext);
   const NUMBER8 = 8;
 
@@ -32,10 +32,15 @@ function Login() {
       <button
         type="button"
         disabled={isBtnDisabled()}
-        onClick={handleClick}
+        onClick={handleLogin}
       >
-        Entrar
+        {
+          isLoading
+            ? 'Carregando...'
+            : 'Entrar'
+        }
       </button>
+      <small>{alertMessage}</small>
     </div>
   );
 }
