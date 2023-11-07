@@ -6,9 +6,12 @@ import {
   accountRouter, loginRouter, expenseRouter, invoiceRouter,
 } from './routers';
 
+const cors = require('cors');
+
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/health', (_req, res) => res.status(200).send('Server on and healthy!'));
 
