@@ -41,6 +41,13 @@ function Login() {
         }
       </button>
       <small>{alertMessage}</small>
+      <div>
+        <p>
+          Novo por aqui?
+          {' '}
+          <a href="/registro">Cadastre-se</a>
+        </p>
+      </div>
     </div>
   );
 }
