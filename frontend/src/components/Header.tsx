@@ -12,8 +12,8 @@ function Header() {
   return (
     <header>
       <div>
-        <Link to="/">Início</Link>
-        <Link to="/">Perfil</Link>
+        <Link to="/home">Início</Link>
+        <Link to="/invoice">Adicionar despesa</Link>
       </div>
       <div>
         <button
