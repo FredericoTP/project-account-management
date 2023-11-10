@@ -1,6 +1,7 @@
 import {
   Model, INTEGER, FLOAT, DATEONLY, STRING,
 } from 'sequelize';
+import ExpenseModel from './ExpenseModel';
 import db from '.';
 
 class InvoiceModel extends Model {
@@ -54,5 +55,7 @@ InvoiceModel.init(
     underscored: true,
   },
 );
+
+InvoiceModel.belongsTo(ExpenseModel, { foreignKey: 'expenseId', as: 'expense' });
 
 export default InvoiceModel;

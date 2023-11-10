@@ -1,5 +1,6 @@
 import { ModelStatic } from 'sequelize';
 import InvoiceModel from '../database/models/InvoiceModel';
+import ExpenseModel from '../database/models/ExpenseModel';
 import { INewInvoice, IUpdateInvoice } from '../interfaces';
 import { validateInvoice, validateUpdateInvoice } from './validations/validationInputValues';
 import { Conflict } from '../errors';
@@ -22,6 +23,14 @@ class InvoiceService {
   public async findByAccountId(accountId: number): Promise<InvoiceModel[]> {
     const invoices = await this.invoiceModel.findAll({
       where: { accountId },
+      include: [{
+        model: ExpenseModel,
+        as: 'expense',
+        attributes: ['expense'],
+      }],
+      attributes: {
+        exclude: ['expenseId'],
+      },
     });
 
     return invoices;
