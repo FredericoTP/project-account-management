@@ -9,7 +9,6 @@ function decodeToken() {
 
   if (token) {
     const decodedToken = jose.decodeJwt(token);
-    console.log(decodedToken);
 
     return decodedToken;
   }

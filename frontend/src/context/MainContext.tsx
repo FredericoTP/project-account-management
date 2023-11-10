@@ -1,5 +1,15 @@
 import { createContext } from 'react';
 
-const MainContext = createContext({});
+type MainContextType = {
+  checkLogin: () => void;
+  userInfo: () => void;
+  accountInvoices: () => Promise<void>;
+  user: {};
+  isLoading: boolean;
+  alertMessage: string;
+  invoice: never[]
+};
+
+const MainContext = createContext({} as MainContextType);
 
 export default MainContext;
